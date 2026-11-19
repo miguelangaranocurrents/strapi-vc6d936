@@ -125,7 +125,10 @@ const relationsApi = contentManagerApi.injectEndpoints({
         return {
           endpointName,
           model: queryArgs.model,
+          // The source document/component: two components sharing a target field must not share results
+          id: queryArgs.params?.id,
           targetField: queryArgs.targetField,
+          locale: queryArgs.params?.locale,
           _q: queryArgs.params?._q,
           idsToOmit: queryArgs.params?.idsToOmit,
           idsToInclude: queryArgs.params?.idsToInclude,
